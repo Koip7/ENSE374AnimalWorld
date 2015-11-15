@@ -8,6 +8,7 @@ public class main {
 		int numOfTrees;
 		int numOfGrass;
 		int numOfCatepillars;
+		int numOfGrasshoppers;
 		int numOfBulejays;
 		int numOfMice;
 		int numOfRabbits;
@@ -17,7 +18,10 @@ public class main {
 		int numOfFox;
 		int numOfHawks;
 		
+		int numOfDays;
+		
 		System.out.println("Welcome to Animal World");
+		
 		System.out.println("How many trees do you want added to the system");
 		numOfTrees= in.nextInt();
 		
@@ -26,6 +30,9 @@ public class main {
 		
 		System.out.println("How many catepillars do you want added to the system");
 		numOfCatepillars= in.nextInt();
+		
+		System.out.println("How many grasshoppers do you want added to the system");
+		numOfGrasshoppers= in.nextInt();
 		
 		System.out.println("How many bluejays do you want added to the system");
 		numOfBulejays= in.nextInt();
@@ -56,7 +63,7 @@ public class main {
 			tree t = new tree();
 			p.x = (int)(Math.random()*149);
 			p.y = (int)(Math.random()*149);
-			while(!(w.occupy(t, p.x, (int)p.x))){
+			while(!(w.occupy(t, p))){
 				t.setPosition(p);
 				p.x = (int)(Math.random()*149);
 				p.y = (int)(Math.random()*149);
@@ -66,7 +73,7 @@ public class main {
 		while(numOfGrass > 0)
 		{
 			grass t = new grass();
-			while(!(w.occupy(t, p.x, (int)p.x))){
+			while(!(w.occupy(t, p))){
 				t.setPosition(p);
 				p.x = (int)(Math.random()*149);
 				p.y = (int)(Math.random()*149);
@@ -76,17 +83,27 @@ public class main {
 		while(numOfCatepillars > 0)
 		{
 			catepillar t = new catepillar();
-			while(!(w.occupy(t, p.x, (int)p.x))){
+			while(!(w.occupy(t, p))){
 				t.setPosition(p);
 				p.x = (int)(Math.random()*149);
 				p.y = (int)(Math.random()*149);
 			}
 			numOfCatepillars--;
 		}
+		while(numOfGrasshoppers > 0)
+		{
+			grasshopper t = new grasshopper();
+			while(!(w.occupy(t, p))){
+				t.setPosition(p);
+				p.x = (int)(Math.random()*149);
+				p.y = (int)(Math.random()*149);
+			}
+			numOfGrasshoppers--;
+		}
 		while(numOfBulejays > 0)
 		{
 			bluejay t = new bluejay();
-			while(!(w.occupy(t, p.x, (int)p.x))){
+			while(!(w.occupy(t, p))){
 				t.setPosition(p);
 				p.x = (int)(Math.random()*149);
 				p.y = (int)(Math.random()*149);
@@ -96,7 +113,7 @@ public class main {
 		while(numOfMice > 0)
 		{
 			mouse t = new mouse();
-			while(!(w.occupy(t, p.x, (int)p.x))){
+			while(!(w.occupy(t, p))){
 				t.setPosition(p);
 				p.x = (int)(Math.random()*149);
 				p.y = (int)(Math.random()*149);
@@ -106,17 +123,27 @@ public class main {
 		while(numOfRabbits > 0)
 		{
 			rabbit t = new rabbit();
-			while(!(w.occupy(t, p.x, (int)p.x))){
+			while(!(w.occupy(t, p))){
 				t.setPosition(p);
 				p.x = (int)(Math.random()*149);
 				p.y = (int)(Math.random()*149);
 			}
 			numOfRabbits--;
 		}
+		while(numOfDeer > 0)
+		{
+			deer t = new deer();
+			while(!(w.occupy(t, p))){
+				t.setPosition(p);
+				p.x = (int)(Math.random()*149);
+				p.y = (int)(Math.random()*149);
+			}
+			numOfDeer--;
+		}
 		while(numOfSquirrels > 0)
 		{
 			squirrel t = new squirrel();
-			while(!(w.occupy(t, p.x, (int)p.x))){
+			while(!(w.occupy(t, p))){
 				t.setPosition(p);
 				p.x = (int)(Math.random()*149);
 				p.y = (int)(Math.random()*149);
@@ -126,7 +153,7 @@ public class main {
 		while(numOfWolves > 0)
 		{
 			wolf t = new wolf();
-			while(!(w.occupy(t, p.x, (int)p.x))){
+			while(!(w.occupy(t, p))){
 				t.setPosition(p);
 				p.x = (int)(Math.random()*149);
 				p.y = (int)(Math.random()*149);
@@ -136,7 +163,7 @@ public class main {
 		while(numOfFox > 0)
 		{
 			fox t = new fox();
-			while(!(w.occupy(t, p.x, (int)p.x))){
+			while(!(w.occupy(t, p))){
 				t.setPosition(p);
 				p.x = (int)(Math.random()*149);
 				p.y = (int)(Math.random()*149);
@@ -146,7 +173,7 @@ public class main {
 		while(numOfHawks > 0)
 		{
 			hawk t = new hawk();
-			while(!(w.occupy(t, p.x, (int)p.x))){
+			while(!(w.occupy(t, p))){
 				t.setPosition(p);
 				p.x = (int)(Math.random()*149);
 				p.y = (int)(Math.random()*149);
@@ -155,7 +182,20 @@ public class main {
 		}
 		
 		w.print();
+		
+		System.out.println("How many days do you want the system to run for?");
+		numOfDays= in.nextInt();
+		
+		in.close();
+		
+		while(numOfDays > 0)
+		{
+			w.nextDay();
+			w.print();
+			numOfDays--;
+		}
+		
 	}
-
+	
 }
 

@@ -1,10 +1,11 @@
 package AnimalWorld;
 import java.util.*;
 
-public abstract class animal extends being{
+public class animal extends being{
 	private int lifeSpan = 2;
 	protected int travelDistance;
-	private List<String> prey;
+	protected List<String> prey;
+	protected boolean hasEaten = false;
 	
 	public int getLifeSpan()
 	{
@@ -14,11 +15,21 @@ public abstract class animal extends being{
 	public void reduceLifeSpan()
 	{
 		lifeSpan--;
+		
+		if(lifeSpan < 0)
+		{
+			this.kill();
+		}
 	}
 	
+	public int getTravelDistance()
+	{
+		return travelDistance;
+	}
 	public void increaseLifeSpan()
 	{
 		lifeSpan = 2;
+		hasEaten = false;
 	}
 	
 	public boolean isPrey(String name)
@@ -26,9 +37,6 @@ public abstract class animal extends being{
 		return prey.contains(name);
 	}
 	
-	public void addPrey(String preyName)
-	{
-		prey.add(preyName);
-	}
+	
 
 }
