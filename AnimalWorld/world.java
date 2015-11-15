@@ -17,7 +17,7 @@ public class world {
 	public void nextDay()
 	{
 		animal a;
-		point p, tempp;
+		point p;
 		int c;
 		point up, down , left, right;
 		Random dice = new Random();
@@ -48,7 +48,6 @@ public class world {
 						for(int k = 0; k < a.getTravelDistance(); k++)
 						{
 							p = new point(i,j);
-							tempp = p;
 							up = new point(p);
 							down = new point(p);
 							left = new point(p);
