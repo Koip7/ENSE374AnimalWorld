@@ -2,7 +2,6 @@ package AnimalWorld;
 import java.util.Scanner;
 
 import AnimalWorld.beings.*;
-import AnimalWorld.beings.animals.*;
 import AnimalWorld.beings.animals.hasWings.*;
 import AnimalWorld.beings.animals.noWings.*;
 import AnimalWorld.beings.animals.insects.*;
