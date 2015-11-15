@@ -1,14 +1,19 @@
 package AnimalWorld;
 import java.util.Random;
 
+import AnimalWorld.beings.animal;
+
 public class world {
 	private int day = 0;
-	private being[][]  map_of_beings= new being[150][150];
+	private static final int row = 150;
+	private static final int col = 150;
+	
+	private being[][]  map_of_beings= new being[row][col];
 	
 	world()
 	{
-		for(int i = 0; i < 150; i++)
-			for (int j = 0; j <150; j++)
+		for(int i = 0; i < row; i++)
+			for (int j = 0; j <col; j++)
 			{
 				map_of_beings[i][j] = null;
 			}
@@ -24,28 +29,26 @@ public class world {
 		
 		day++;
 		
-		System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
-		
 		for(int i = 0; i < 150; i++)
 		{
 			for (int j = 0; j < 150; j++)
 			{
-				if(map_of_beings[i][j] != null && map_of_beings[i][j] instanceof animal)
+				if(map_of_beings[i][j] != null && map_of_beings[i][j] instanceof animal)// if the tile is an animal
 				{
-					a = (animal) map_of_beings[i][j];
+					a = (animal) map_of_beings[i][j];// type casting the being into animal if it is an animal all info is kept
 					
-					if(!a.hasEaten)
+					if(!a.getHasEaten())//if it has not eaten the day before
 						a.reduceLifeSpan();
-					else
+					else//if it has eaten the day before
 						a.increaseLifeSpan();
 					
-					if(!a.isALive())
+					if(!a.isALive())//if it died
 					{
 						map_of_beings[i][j] = null;
 					}
 					else
 					{
-						for(int k = 0; k < a.getTravelDistance(); k++)
+						for(int k = 0; k < a.getTravelDistance(); k++)//to make sure that it moves to it's fullest move distance
 						{
 							p = new point(i,j);
 							up = new point(p);
@@ -53,25 +56,28 @@ public class world {
 							left = new point(p);
 							right = new point(p);
 
-							if(p.y == 149)
+							if(p.y == 149)//top border checking
 								up = new point(p);
 							else
 								up = new point(up.x , up.y + 1);
-							if(p.y == 0)
+							
+							if(p.y == 0)//bottom border checking
 								down = new point(p);
 							else	
 								down = new point(down.x , up.y - 1);
-							if(p.x == 149)
+							
+							if(p.x == 149)//left border checking
 								left = new point(p);
 							else
 								left = new point(up.x + 1, up.y);
-							if(p.x == 0)
+							
+							if(p.x == 0)//right border checking
 								right = new point(p);
 							else	
 								right = new point(up.x - 1, up.y);
 							
 							
-							c = dice.nextInt(4);
+							c = dice.nextInt(4);//chooses a random direction to move in
 							
 							switch(c)
 							{
@@ -89,24 +95,22 @@ public class world {
 								break;
 							}
 							
-							if(isfull(p))
+							if(isfull(p))// if the position that is chosen is occupied
 							{
-								if(a.isPrey(map_of_beings[p.x][p.y].getName()))
+								if(a.isPrey(map_of_beings[p.x][p.y].getName()))//if the object at that position is prey
 								{
-									a.hasEaten = true;
-									k =  a.getTravelDistance();								
-									map_of_beings[p.x][p.y] = a;
+									a.setHasEaten();
+									k =  a.getTravelDistance();	//it fulfills it's movement requirements							
+									map_of_beings[p.x][p.y] = a;//it now occupies that space
 									map_of_beings[i][j] = null;
-									a.setPosition(p);
 								}
 								else
-									map_of_beings[i][j] = a;
+									map_of_beings[i][j] = a;//if it is not prey then it continues on 
 							}
-							else
+							else//if it is not full then it moves to the position
 							{
 								map_of_beings[p.x][p.y] = a;
 								map_of_beings[i][j] = null;
-								a.setPosition(p);
 							}
 						}
 					}
@@ -115,13 +119,11 @@ public class world {
 		}
 		
 	}
-	
 		
-	
-	
 	public int getDay(){
 		return day;
 	}
+	
 	public boolean occupy(being b, point p){
 		
 		if(map_of_beings[p.x][p.y] == null)
@@ -135,12 +137,20 @@ public class world {
 	public void print()
 	{
 		char c;
-		String name; 
-		System.out.println("-------------------------------------------------------------------------------------");
+		String name;
+		
 		System.out.println("Day " + getDay());
-		for(int i = 0; i < 150; i++)
+		
+		System.out.print('+');
+		for(int i = 0; i < col; i ++)
+			System.out.print('-');
+		System.out.print('+');
+		System.out.print('\n');
+		
+		for(int i = 0; i < row; i++)
 		{
-			for (int j = 0; j <150; j++)
+			System.out.print('|');
+			for (int j = 0; j <col; j++)
 			{
 				if(map_of_beings[i][j] != null)
 				name = map_of_beings[i][j].getName();
@@ -195,6 +205,12 @@ public class world {
 			System.out.print('|');
 			System.out.print('\n');
 		}
+		System.out.print('+');
+		for(int i = 0; i < col; i ++)
+			System.out.print('-');
+		System.out.print('+');
+		System.out.println();
+		System.out.println();
 		
 	}
 	

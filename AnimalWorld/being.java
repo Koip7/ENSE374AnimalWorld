@@ -1,18 +1,16 @@
 package AnimalWorld;
 
 public abstract class being {
-	protected boolean alive = true;
-	private point position;
+	protected boolean alive;
 	private String name;
+	
+	public being(){
+		alive = true;
+		name = null;
+	}
 	
 	public boolean isALive(){
 		return alive;
-	}
-	public point getPosition(){
-		return position;
-	}
-	public void setPosition(point p){
-		position = p;
 	}
 	public void kill()
 	{

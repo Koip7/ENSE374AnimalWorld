@@ -1,184 +1,168 @@
 package AnimalWorld;
 import java.util.Scanner;
+
+import AnimalWorld.beings.*;
+import AnimalWorld.beings.animals.*;
+import AnimalWorld.beings.animals.hasWings.*;
+import AnimalWorld.beings.animals.noWings.*;
+import AnimalWorld.beings.animals.insects.*;
+
+
+
 public class main {
 	public static void main(String[] args){
 		world w = new world();
 		point p = new point();
 		Scanner in = new Scanner(System.in);
-		int numOfTrees;
-		int numOfGrass;
-		int numOfCatepillars;
-		int numOfGrasshoppers;
-		int numOfBulejays;
-		int numOfMice;
-		int numOfRabbits;
-		int numOfDeer;
-		int numOfSquirrels;
-		int numOfWolves;
-		int numOfFox;
-		int numOfHawks;
-		
+		int num;
 		int numOfDays;
 		
 		System.out.println("Welcome to Animal World");
 		
 		System.out.println("How many trees do you want added to the system");
-		numOfTrees= in.nextInt();
-		
-		System.out.println("How much grass do you want added to the system");
-		numOfGrass= in.nextInt();
-		
-		System.out.println("How many catepillars do you want added to the system");
-		numOfCatepillars= in.nextInt();
-		
-		System.out.println("How many grasshoppers do you want added to the system");
-		numOfGrasshoppers= in.nextInt();
-		
-		System.out.println("How many bluejays do you want added to the system");
-		numOfBulejays= in.nextInt();
-		
-		System.out.println("How many mice do you want added to the system");
-		numOfMice= in.nextInt();
-		
-		System.out.println("How many rabbits do you want added to the system");
-		numOfRabbits= in.nextInt();
-		
-		System.out.println("How many deer do you want added to the system");
-		numOfDeer= in.nextInt();
-		
-		System.out.println("How many squirrels do you want added to the system");
-		numOfSquirrels= in.nextInt();
-		
-		System.out.println("How many wolves do you want added to the system");
-		numOfWolves= in.nextInt();
-		
-		System.out.println("How many fox do you want added to the system");
-		numOfFox= in.nextInt();
-		
-		System.out.println("How many hawks do you want added to the system");
-		numOfHawks= in.nextInt();
-		//-----------------------------------------------------------------------------------------------------
-		while(numOfTrees > 0)
+		num= in.nextInt();
+		while(num > 0)
 		{
 			tree t = new tree();
 			p.x = (int)(Math.random()*149);
 			p.y = (int)(Math.random()*149);
 			while(!(w.occupy(t, p))){
-				t.setPosition(p);
 				p.x = (int)(Math.random()*149);
 				p.y = (int)(Math.random()*149);
 			}
-			numOfTrees--;
+			num--;
 		}
-		while(numOfGrass > 0)
+		
+		System.out.println("How much grass do you want added to the system");
+		num= in.nextInt();
+		while(num > 0)
 		{
 			grass t = new grass();
 			while(!(w.occupy(t, p))){
-				t.setPosition(p);
 				p.x = (int)(Math.random()*149);
 				p.y = (int)(Math.random()*149);
 			}
-			numOfGrass--;
+			num--;
 		}
-		while(numOfCatepillars > 0)
+		
+		System.out.println("How many catepillars do you want added to the system");
+		num= in.nextInt();
+		while(num > 0)
 		{
 			catepillar t = new catepillar();
 			while(!(w.occupy(t, p))){
-				t.setPosition(p);
 				p.x = (int)(Math.random()*149);
 				p.y = (int)(Math.random()*149);
 			}
-			numOfCatepillars--;
+			num--;
 		}
-		while(numOfGrasshoppers > 0)
+		
+		System.out.println("How many grasshoppers do you want added to the system");
+		num= in.nextInt();
+		while(num > 0)
 		{
 			grasshopper t = new grasshopper();
 			while(!(w.occupy(t, p))){
-				t.setPosition(p);
 				p.x = (int)(Math.random()*149);
 				p.y = (int)(Math.random()*149);
 			}
-			numOfGrasshoppers--;
+			num--;
 		}
-		while(numOfBulejays > 0)
+		
+		System.out.println("How many bluejays do you want added to the system");
+		num= in.nextInt();
+		while(num > 0)
 		{
 			bluejay t = new bluejay();
 			while(!(w.occupy(t, p))){
-				t.setPosition(p);
 				p.x = (int)(Math.random()*149);
 				p.y = (int)(Math.random()*149);
 			}
-			numOfBulejays--;
+			num--;
 		}
-		while(numOfMice > 0)
+		
+		System.out.println("How many mice do you want added to the system");
+		num= in.nextInt();
+		while(num > 0)
 		{
 			mouse t = new mouse();
 			while(!(w.occupy(t, p))){
-				t.setPosition(p);
 				p.x = (int)(Math.random()*149);
 				p.y = (int)(Math.random()*149);
 			}
-			numOfMice--;
+			num--;
 		}
-		while(numOfRabbits > 0)
+		
+		System.out.println("How many rabbits do you want added to the system");
+		num= in.nextInt();
+		while(num > 0)
 		{
 			rabbit t = new rabbit();
 			while(!(w.occupy(t, p))){
-				t.setPosition(p);
 				p.x = (int)(Math.random()*149);
 				p.y = (int)(Math.random()*149);
 			}
-			numOfRabbits--;
+			num--;
 		}
-		while(numOfDeer > 0)
+		
+		System.out.println("How many deer do you want added to the system");
+		num= in.nextInt();
+		while(num > 0)
 		{
 			deer t = new deer();
 			while(!(w.occupy(t, p))){
-				t.setPosition(p);
 				p.x = (int)(Math.random()*149);
 				p.y = (int)(Math.random()*149);
 			}
-			numOfDeer--;
+			num--;
 		}
-		while(numOfSquirrels > 0)
+		
+		System.out.println("How many squirrels do you want added to the system");
+		num= in.nextInt();
+		while(num > 0)
 		{
 			squirrel t = new squirrel();
 			while(!(w.occupy(t, p))){
-				t.setPosition(p);
 				p.x = (int)(Math.random()*149);
 				p.y = (int)(Math.random()*149);
 			}
-			numOfSquirrels--;
+			num--;
 		}
-		while(numOfWolves > 0)
+		
+		System.out.println("How many wolves do you want added to the system");
+		num= in.nextInt();
+		while(num > 0)
 		{
 			wolf t = new wolf();
 			while(!(w.occupy(t, p))){
-				t.setPosition(p);
 				p.x = (int)(Math.random()*149);
 				p.y = (int)(Math.random()*149);
 			}
-			numOfWolves--;
+			num--;
 		}
-		while(numOfFox > 0)
+		
+		System.out.println("How many fox do you want added to the system");
+		num= in.nextInt();
+		while(num > 0)
 		{
 			fox t = new fox();
 			while(!(w.occupy(t, p))){
-				t.setPosition(p);
 				p.x = (int)(Math.random()*149);
 				p.y = (int)(Math.random()*149);
 			}
-			numOfFox--;
+			num--;
 		}
-		while(numOfHawks > 0)
+		
+		System.out.println("How many hawks do you want added to the system");
+		num= in.nextInt();
+		while(num > 0)
 		{
 			hawk t = new hawk();
 			while(!(w.occupy(t, p))){
-				t.setPosition(p);
 				p.x = (int)(Math.random()*149);
 				p.y = (int)(Math.random()*149);
 			}
-			numOfHawks--;
+			num--;
 		}
 		
 		w.print();
