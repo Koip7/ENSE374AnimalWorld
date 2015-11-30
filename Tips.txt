@@ -1,0 +1,2 @@
+You may want to increase the buffer size of the command console window as each event is represented on a 
+seperate line and there are alot of events.
