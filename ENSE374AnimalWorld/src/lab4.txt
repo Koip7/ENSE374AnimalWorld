@@ -1,0 +1,62 @@
+System Design Document
+Animal Simulation
+Rev 1.0
+
+Justin Smith
+University of Regina
+200345989
+Nov 1, 2015
+ 
+1 Introduction 
+
+1.1Purpose
+
+The Sask Wildlife Federation(SWF) needs a software system to simulate animal life cycles in their natural habitat.
+ This software system will be based on a food cycle diagram provided by SWF. The system will simulate a virtual 
+environment which will allow the animals to based  on their respective places in the food cycle diagram. This 
+system will specifically only simulate interactions based on the food cycle diagram and no other external forces 
+will be  included in the application.
+
+1.2Design Goals
+
+The world that is created by the application will be a square 150x150 grid representing a 150km sq area environment.
+All animals will be able to move from one tile to another but their movement is restricted by the type on animal it
+ is. Animals with wings will be able to travel 3km per cycle,  wingless animals will travel 5km per cycle and 
+insects will be able to travel 1km per cycle. Each cycle will be represented by the application as a day. 
+In order for a creature to survive they must eat withing two days regardless of which creature it is. Since the 
+application will be solely based on food cycle interactions the creatures will not be able to reproduce in order 
+to produce offspring. When the user starts the application they will control the initial amount of creatures that 
+will populate the virtual world and also the running time of the application in days. While the application runs 
+it will output coordinates of surviving creatures and a list of events that occurred that day.
+
+2 Current Software Architecture
+
+Currently there is no existing system at the SWF that simulate animal interactions based on the provided food chain
+diagram.
+
+3 Proposed Software Architecture
+
+3.1Overview
+
+The application will be coded in Java using the Eclipse IDE and will only be able to run from the console window on
+the user's personal computer. 
+
+ 
+3.2Subsystem Decomposition
+
+The objects for the system will be divided into two main classes World and Being. The world class will hold all 
+the information relating to the environment of the application such as the grid and how many days have passed. 
+The Being is an abstract class that will be the basis for all of the entities of the application. The Trees and 
+Grass class will inherit from the Being class and will be used to create their respective objects. The Animal is 
+another abstract class that will inherit from the Being class. The Insect, Wingless, and Wings class will each 
+inherit from the Animal class and animal will inherit from these classes based on their category as described in 
+the diagram labeled classDiagram.  
+
+
+
+ 
+3.3Boundary Conditions
+
+When the application is executed the user will be prompted to select the amount of each creature to be populated 
+and the length of the simulation if any of these variables are set to be above a certain threshold the user will 
+be represented with an error and will have to re input their requested values.
